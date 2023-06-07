@@ -1,0 +1,15 @@
+public class Test {
+    // methods (functions)
+    // attributes (variables)
+    
+    public static void main(String[] args) {
+        System.out.println(x:"Hello World");
+        Integer myInt = 20;
+        String myString = "hello";
+        char myString = "h";
+        myString.length();
+    }
+}
+
+1. Compile into Byte Code
+2. Run the byte code with the JVM
