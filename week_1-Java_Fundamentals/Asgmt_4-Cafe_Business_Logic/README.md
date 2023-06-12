@@ -48,7 +48,7 @@ For this assignment you will have two files, CafeUtil.java and TestCafe.java. Al
 
 
 
-$$ \Large\bold{Ninja~Bonuses} $$
+### Ninja Bonuses
 
 1. `void printPriceChart(String product, double price, int maxQuantity)`
     
@@ -98,6 +98,6 @@ $$ \Large\bold{Ninja~Bonuses} $$
         ```
 
 
-$$ \Large\bold{Sensei~Bonus} $$
+### Sensei Bonus
 
 Make a method `addCustomers` where a barista can enter multiple customers. Hint: You can use a while loop and ask the user to type "q" when they are finished entering names.
