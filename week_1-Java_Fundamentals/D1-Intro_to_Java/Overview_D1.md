@@ -3,9 +3,14 @@
 ## Topics to Cover
 - Java Fundamentals
     - Why Java?
+    - Compiled vs Runtime
+    - Java Naming Conventions
+    - Java Syntax
     - Variables & DataTypes
-    - Conditional
-    - Switch Statements and Ternary Operators
+        - Primitives
+        - Wrapper Classes
+        - Strings
+        - Type Casting
 
 ### Notes
 
@@ -20,23 +25,3 @@ public class FileController {
     // Curly Braces
 }
 ```
-
-
-- Compiled vs Runtime
-- Java Naming Conventions
-- Java Syntax
-- Java Data Types
-    - Primitives
-        - Wrapper Classes
-        - Strings
-        - Fixed Arrays
-        - Dynamic Arrays
-        - Maps
-        - Type Casting
-    - Variables
-- Methods
-- Conditionals
-- Switch Statements
-- Ternary Statements
-- Loops
-- Formatting Strings

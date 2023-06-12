@@ -1,19 +1,23 @@
 public class FirstController {
+    
     // ? Java ALWAYS needs an Entry Point Method AKA Main Method
     public static void main(String[] args) {
-        // syst out shortcut for below
-        System.out.println("Hello World");
+        
+        // sysout shortcut for below
+        System.out.println("Hello World!");
         
         // * Defining Variables
-        // String myName = "Brittney";
-        // int favoriteNumber; // ? camelCase for variables
-        // favoriteNumber = 7;
-        // long monthsSinceKindergarden = 123456789;
-        // double minasAge = 2.5;
-        // boolean isHappy = true;
-        // char inital = 'a'; // ? single quotes can be used here
-        // Integer $sistersAge = 15;
-        // String _sistersName = "Bria";
+        String myName = "Brittney";
+        int favoriteNumber; // ? camelCase for variables
+        favoriteNumber = 7;
+        
+        long monthsSinceKindergarden = 123456789;
+        double minasAge = 2.5;
+        boolean isHappy = true;
+        char inital = 'z'; // ? single quotes can be used for char
+        
+        Integer $sistersAge = 15;
+        String _sistersName = "Gen";
     }
     
     /* To print into terminal...
