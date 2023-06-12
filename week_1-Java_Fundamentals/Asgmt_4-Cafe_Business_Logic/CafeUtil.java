@@ -74,13 +74,29 @@ public class CafeUtil {
     }
     
     // Todo: addCustomer(ArrayList<String> customers) √
-    public void addCustomer( ArrayList<String> customers ) {
+    // public void addCustomer( ArrayList<String> customers ) {
         
-        System.out.println("Please enter your name:");
-        String userName = System.console().readLine();
-        System.out.println("Hello, " + userName);
+    //     System.out.println("Please enter your name:");
+    //     String userName = System.console().readLine();
+    //     System.out.println("Hello, " + userName);
         // Increment how many ppl are in line by using .size(), as we are dealing with an ArrayLists
-        System.out.printf("There are %s people in front of you.", customers.size());
-        customers.add(userName);
+    //     System.out.printf("There are %s people in front of you.", customers.size());
+    //     customers.add(userName);
+    // }
+    
+    public void addCustomer(ArrayList<String> customers) {
+        String input;
+        System.out.println("Please enter your name (type 'q' to quit):");
+        
+        while (true) {
+            input = System.console().readLine();
+            if (input.equalsIgnoreCase("q")) {
+                break; // Exit the loop if the user enters 'q'
+            } else {
+                System.out.println("Hello, " + input);
+                System.out.printf("There are %s people in front of you.\n", customers.size());
+                customers.add(input);
+            }
+        }
     }
 }

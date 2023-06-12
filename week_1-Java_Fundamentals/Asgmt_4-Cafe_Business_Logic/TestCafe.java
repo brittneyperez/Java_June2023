@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Arrays;
+// import java.util.Arrays;
 
 public class TestCafe {
     public static void main(String[] args) {
@@ -43,9 +43,11 @@ public class TestCafe {
         System.out.println("\n----- Add Customer Test-----");
         ArrayList<String> customers = new ArrayList<String>();
         // --- Test 4 times ---
-        for (int i = 0; i < 4; i++) {
-            appTest.addCustomer(customers);
-            System.out.println("\n");
-        }
+        // for (int i = 0; i < 4; i++) {
+        //     appTest.addCustomer(customers);
+        //     System.out.println("\n");
+        // }
+        
+        appTest.addCustomer(customers);
     }
 }
