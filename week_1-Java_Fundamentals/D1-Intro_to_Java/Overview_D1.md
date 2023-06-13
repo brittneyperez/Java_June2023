@@ -1,4 +1,4 @@
-## **Week 1** - D1 |  ２０２３年０６月０６（火）
+## **Week 1** - D1 |  ２０２３年０６月０６日（火）
 
 ## Topics to Cover
 - Java Fundamentals
