@@ -86,12 +86,12 @@ Since we'll be doing the same sorts of actions with every order, we can define m
     - Create a method called `getStatusMessage` that returns a String message. If the order is ready, return `"Your order is ready."`, if not, return `"Thank you for waiting. Your order will be ready soon."`
     
 3. ***`getOrderTotal`***
-    - Similar to the `getOrderTotal` method from the **[Cafe Business Logic](https://www.notion.so/Cafe-Business-Logic-5d4a47b82a1043c7b2032aa2f96192d4?pvs=21)** assignment, create a method called `getOrderTotal` that sums together each of the item's prices, and returns the total amount.
+    - Similar to the `getOrderTotal` method from the **[Cafe Business Logic](https://github.com/brittneyperez/Java_June2023/tree/main/week_1-Java_Fundamentals/Asgmt_4-Cafe_Business_Logic)** assignment, create a method called `getOrderTotal` that sums together each of the item's prices, and returns the total amount.
         
         *Note: This time, you do not need to pass in a list of prices, because each item object in* `this` *order's `items` array has its own price, that you can access using a getter!*
         
 4. ***`display`***
-    - Similar to the `displayMenu` function from the **[Cafe Business Logic](https://www.notion.so/Cafe-Business-Logic-5d4a47b82a1043c7b2032aa2f96192d4?pvs=21)** assignment, create a method called `display` that prints out the order information like so:
+    - Similar to the `displayMenu` function from the **Cafe Business Logic** assignment, create a method called `display` that prints out the order information like so:
         
         ```
             Customer Name: Cindhuri
