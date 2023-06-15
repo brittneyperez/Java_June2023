@@ -10,10 +10,10 @@ Since we'll be doing the same sorts of actions with every order, we can define m
 
 - **Private Member Variables:**
     - Set the member variables to `private` instead of `public`.
-
+    
 - **Constructor:**
     - Add a constructor to your `Item` class that takes a `String name` and `double price` as arguments to set the name and price for that object on instantiation.
-
+    
 - **Accessors & Mutators (Getters and Setters):**
     - Create getters and setters for all the member variables.
         
@@ -38,19 +38,19 @@ Since we'll be doing the same sorts of actions with every order, we can define m
 1. **Private Member Variables:**
     - Set the member variables to `private` instead of `public`.
     - This time do not include the `total` member variable, as we will be using a method for getting the total.
-
+    
 2. **Constructor:**
     - Add a constructor to your `Order` class that takes no arguments, but sets the name to "Guest" and initializes the items array to an empty `ArrayList<Item>`
-
+    
 3. **Overloaded Constructor:**
     - Add an overloaded constructor for `Order` that takes `String name` as an argument, so you can create an instance with a name.
-
+    
 4. **Accessors & Mutators (Getters and Setters)**
     - Create getters and setters for all the member variables, using good naming convention for boolean accessors.
         
         ```java
         import java.util.ArrayList;
-
+        
         // Here we're creating a new data type called Order
         public class Order {
             // MEMBER VARIABLES
@@ -84,6 +84,7 @@ Since we'll be doing the same sorts of actions with every order, we can define m
         
 2. ***`getStatusMessage`***
     - Create a method called `getStatusMessage` that returns a String message. If the order is ready, return `"Your order is ready."`, if not, return `"Thank you for waiting. Your order will be ready soon."`
+    
 3. ***`getOrderTotal`***
     - Similar to the `getOrderTotal` method from the **[Cafe Business Logic](https://www.notion.so/Cafe-Business-Logic-5d4a47b82a1043c7b2032aa2f96192d4?pvs=21)** assignment, create a method called `getOrderTotal` that sums together each of the item's prices, and returns the total amount.
         

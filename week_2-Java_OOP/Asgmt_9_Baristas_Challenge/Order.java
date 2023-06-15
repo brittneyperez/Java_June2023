@@ -44,7 +44,7 @@ public class Order {
     }
     
     public void display() {
-        System.out.println("Customer Name: " + this.customerName);
+        System.out.println("\n--- Receipt ---\nCustomer Name: " + this.customerName);
         for( Item item : orderedItems ) {
             System.out.println(item.getName() + " -- $" + item.getPrice());
         }
@@ -53,7 +53,7 @@ public class Order {
         // Format the total to two decimal places
         DecimalFormat decimalFormat = new DecimalFormat("#0.00");
         String formattedTotal = decimalFormat.format(getOrderTotal());
-        System.out.println("Total: $" + formattedTotal); 
+        System.out.println("----------\nTotal: $" + formattedTotal + "\n"); 
     }
     
     // GETTERS & SETTERS
