@@ -8,6 +8,7 @@ The `BankAccount` class represents a bank account with checking and savings bala
 - `savingsBalance`: Represents the balance of the savings account (private).
 - `numberOfAccounts`: Tracks the total number of bank accounts (static).
 - `totalAmountOfMoney`: Stores the total amount of money across all accounts (static).
+- `accountNumber`: Stores the unique ten-digit account number associated with each `BankAccount` instance (private).
 
 ### Constructor
 
@@ -17,6 +18,7 @@ The `BankAccount` class represents a bank account with checking and savings bala
 
 - `getCheckingBalance()`: Retrieves the checking account balance formatted as a string.
 - `getSavingsBalance()`: Retrieves the savings account balance formatted as a string.
+- `getAccountNumber()`: Retrieves the ten-digit account number associated with the account.
 
 ### Methods
 
@@ -24,5 +26,6 @@ The `BankAccount` class represents a bank account with checking and savings bala
 - `withdraw(double amountWithdrawed, String accountName)`: Withdraws the specified amount from the checking or savings account based on the provided account name. Checks for sufficient funds and updates the account balance. Subtracts the withdrawn amount from the `totalAmountOfMoney`.
 - `hasSufficientFunds(double amount, String accountName)`: Private method that checks if there are sufficient funds in the specified account for a withdrawal.
 - `checkBalance()`: Displays the total balance across all accounts formatted as a string.
+- `generateAccountNumber()`: This private method generates a random ten-digit account number for each `BankAccount` instance.
 
 Note: The `DecimalFormat` class is used to format the balance and amounts with two decimal places.
