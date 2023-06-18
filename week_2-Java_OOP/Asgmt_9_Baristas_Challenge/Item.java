@@ -1,17 +1,17 @@
 public class Item {
     
     //* MEMBER VARIABLES
-    String name;
-    double price;
+    private String name;
+    private double price;
     
-    // CONSTRUCTOR
+    //* CONSTRUCTOR
     // Takes a name and price as arguments and sets them accordingly
     public Item( String name, double price ) {
         this.name = name;
         this.price = price;
     }
     
-    // GETTERS & SETTERS - for name and price
+    //* GETTERS & SETTERS - for name and price
     public String getName() {
         return this.name;
     }

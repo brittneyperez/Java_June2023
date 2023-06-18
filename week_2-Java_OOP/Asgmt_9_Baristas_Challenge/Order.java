@@ -10,13 +10,13 @@ public class Order {
     public ArrayList<Item> orderedItems = new ArrayList<Item>(); // Initialize the ArrayList
     // public double total; // 0
     
-    // CONSTRUCTOR
+    //* CONSTRUCTOR
     // No arguments, sets name to "Guest", initializes items as an empty list
     public Order() {
         this.customerName = "Guest"; // generic default name
         this.orderedItems = new ArrayList<Item>();
     }
-    // OVERLOADED CONSTRUCTORS
+    //* Overloaded Constructors
     // Takes a name as an argument, sets name to this custom name.
     public Order( String customerName ) { // if name is provided
         this.customerName = customerName;
@@ -37,10 +37,13 @@ public class Order {
     
     public double getOrderTotal() {
         double total = 0;
-        for( Item item : orderedItems ) {
+        for (Item item : orderedItems) {
             total += item.getPrice();
         }
-        return total;
+        
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        String formattedTotal = decimalFormat.format(total);
+        return Double.parseDouble(formattedTotal);
     }
     
     public void display() {
@@ -56,7 +59,7 @@ public class Order {
         System.out.println("----------\nTotal: $" + formattedTotal + "\n"); 
     }
     
-    // GETTERS & SETTERS
+    //* GETTERS & SETTERS
     public String getCustomerName() {
         return this.customerName;
     }
