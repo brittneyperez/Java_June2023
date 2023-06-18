@@ -1,10 +1,16 @@
 # ! NOT TO BE UPLOADED TO GITHUB YET
+.DS_Store
+.metadata/
+
 # week_1-Java_Fundamentals
 week_1-Java_Fundamentals/Asgmt_6-Map_of_the_Hashmatique
 week_1-Java_Fundamentals/Asgmt_7-List_of_Exceptions
 
 # week_2-Java_OOP
-week_2-Java_OOP/D4
-week_2-Java_OOP/OOP_Fundamentals
-# week_2-Java_OOP/Asgmt_9-Baristas_Challenge
-week_2-Java_OOP/Asgmt_10-BankAccount
+# week_2-Java_OOP/D4
+# week_2-Java_OOP/D5
+# week_2-Java_OOP/D6
+
+# week_2-Java_OOP/OOP_Fundamentals
+week_2-Java_OOP/Asgmt_11-Coffeedore64
+week_2-Java_OOP/Asgmt_12-Car_and_Driver
