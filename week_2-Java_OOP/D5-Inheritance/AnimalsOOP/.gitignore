@@ -1,0 +1,42 @@
+# Compiled class files
+*.class
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# Generated files
+target/
+bin/
+logs/
+
+# IDE-specific files and directories
+.settings
+.classpath
+.project
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Dependency management
+/.mvn
+/mvnw
+/mvnw.cmd
+
+# Gradle specific
+/.gradle
+/build/
+
+# IntelliJ IDEA
+/.idea
+
+# Eclipse specific
+/.metadata
+
+# Mac-specific
+.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db
