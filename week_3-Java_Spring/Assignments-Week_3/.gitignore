@@ -1,0 +1,40 @@
+# macOS system files
+.DS_Store
+
+# IntelliJ IDEA files
+.idea/
+
+# Eclipse files
+.classpath
+.project
+.settings/
+
+# Gradle files
+.gradle/
+build/
+out/
+
+# Maven files
+target/
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# Application properties
+src/main/resources/application.properties
+
+# Dependency lock files
+maven.lock
+build.gradle.lock
+
+# IDE-specific files
+.vscode/
+.metadata/
