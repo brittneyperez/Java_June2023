@@ -1,26 +1,40 @@
-# General
+# macOS system files
 .DS_Store
-Thumbs.db
 
-# Spring Tool Suite
-.metadata/
+# IntelliJ IDEA files
+.idea/
 
-# Visual Studio Code
-.vscode/
+# Eclipse files
+.classpath
+.project
+.settings/
 
-# Maven
+# Gradle files
+.gradle/
+build/
+out/
+
+# Maven files
 target/
 
-# Compiled class file
+# Compiled class files
 *.class
 
 # Log files
 *.log
 
-# Eclipse
-.classpath
-.project
-.settings/
-bin/
-*.launch
-*.iml
+# Package files
+*.jar
+*.war
+*.ear
+
+# Application properties
+src/main/resources/application.properties
+
+# Dependency lock files
+maven.lock
+build.gradle.lock
+
+# IDE-specific files
+.vscode/
+.metadata/
