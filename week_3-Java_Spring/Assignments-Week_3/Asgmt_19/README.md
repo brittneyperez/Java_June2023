@@ -4,7 +4,7 @@ This Spring application demonstrates the usage of query parameters in routing. T
 
 ## `MainController`
 
-The `MainController` class is the main controller of the application. It is annotated with @RestController and handles the incoming HTTP requests for the `/hello rout`e.
+The `MainController` class is the main controller of the application. It is annotated with @RestController and handles the incoming HTTP requests for the `/hello roue`.
 
 
 ## **Query Parameters**
