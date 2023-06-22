@@ -4,7 +4,7 @@ This Spring application demonstrates the usage of query parameters in routing. T
 
 ## `MainController`
 
-The `MainController` class is the main controller of the application. It is annotated with @RestController and handles the incoming HTTP requests for the /hello route.
+The `MainController` class is the main controller of the application. It is annotated with @RestController and handles the incoming HTTP requests for the `/hello rout`e.
 
 
 ## **Query Parameters**
@@ -18,7 +18,7 @@ Query parameters are key-value pairs added to the end of a URL after a question 
 
 - Description: This route handles the default greeting when no name is provided as a query parameter.
 - Usage: [localhost:8080/hello](#)
-- Response: Displays "Hello Human" if no name is provided. If a name is provided as a query parameter (`?name=<name>`), it will display "Hello <name>".
+- Response: Displays "Hello Human" if no name is provided. If a name is provided as a query parameter (`?name=<name>`), it will display "Hello `<name>`".
 
 ### 2. Route: `/hello/fullname`
 
