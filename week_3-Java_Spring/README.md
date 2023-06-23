@@ -30,8 +30,8 @@
 <!-- - #18 - <span style="color: grey;">~~Daikichi~~</span> Routes -->
 - #18 - Daily Text Routes
 - #19 - Hello Human
-<!-- - #20 - **Daikichi Path Variables** *  -->
-- #20 - **Daily Text Path Variables** * 
+- #20 - **Daikichi Path Variables** * 
+<!-- - #20 - **Daily Text Path Variables** *  -->
 - #21 - Hopper's Reciept
 - #22 - Display Date
 - #23 - **Fruity Loops** *
