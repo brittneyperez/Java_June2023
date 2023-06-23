@@ -1,13 +1,61 @@
-# ! NOT TO BE UPLOADED TO GITHUB YET
-**/.DS_Store
-.metadata/
-
+# ! NOT TO BE UPLOADED TO GITHUB
 # week_1-Java_Fundamentals
-week_1-Java_Fundamentals/Asgmt_6-Map_of_the_Hashmatique
 week_1-Java_Fundamentals/Asgmt_7-List_of_Exceptions
 
 # week_2-Java_OOP
 week_2-Java_OOP/Asgmt_11-Coffeedore64
 week_2-Java_OOP/Asgmt_12-Car_and_Driver
 
-week_3-Java_Spring
+# week_3-Java_Spring
+week_3-Java_Spring/Lecture_Notes/D9
+
+
+.metadata/
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Maven
+target/
+
+# Gradle
+build/
+.gradle/
+!.gradle/
+build.gradle.kts
+gradle.properties
+
+# Spring Boot
+spring-boot-starter-logs/
+spring-boot-starter-tomcat/
+
+# IDE-specific files
+.vscode/
+*.iml
+
+# Dependencies
+/bin/
+/lib/
+/target/
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Ignore files generated during build
+.gradle
+build/
+out/
