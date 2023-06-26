@@ -14,6 +14,7 @@
 		
 		<!-- For any Bootstrap that uses JS -->
 		<!-- <script src="/webjars/bootstrap/js/bootstrap.min.js"></script> -->
+		
 		<script type="text/javascript" src="/js/template.js"></script>
 		<title>Time</title>
 	</head>
@@ -26,7 +27,7 @@
 			
 			<div id="date_time_links" class="mt-5">
 				<h3 class="d-flex justify-content-center text-secondary">Current Time</h3>
-				<h4 class="d-flex justify-content-center"><c:out value="${time}" /></h4>
+				<h4 class="d-flex justify-content-center text-primary"><c:out value="${time}" /></h4>
 			</div>
 		</div>
 	</body>

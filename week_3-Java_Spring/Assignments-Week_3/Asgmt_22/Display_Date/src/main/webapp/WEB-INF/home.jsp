@@ -9,12 +9,12 @@
 		<!-- for Bootstrap CSS -->
 		<!-- <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" /> -->
 		
-		<!-- YOUR own local CSS -->
+		<!-- YOUR own local CSS and JS-->
 		<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+		<!-- <script type="text/javascript" src="/js/app.js"></script> -->
 		
 		<!-- For any Bootstrap that uses JS -->
 		<!-- <script src="/webjars/bootstrap/js/bootstrap.min.js"></script> -->
-		<!-- <script type="text/javascript" src="/js/app.js"></script> -->
 		<title>Display Date & Time</title>
 	</head>
 	<body>
