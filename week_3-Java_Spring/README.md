@@ -30,20 +30,13 @@
 - ~~#18 - Daily Text Routes~~
 - ~~#19 - Hello Human~~
 - ~~#20 - **Daikichi Path Variables** *~~
-- #21 - Hopper's Reciept
-- #22 - Display Date
-- #23 - **Fruity Loops** *
-- #24 - Counter
+- ~~#21 - Hopper's Reciept~~
+- ~~#22 - Display Date~~
+- ~~#23 - **Fruity Loops** *~~
+- ~~#24 - Counter~~
 - #25 - **Omikuji Form** *
 - #26 - Ninja Gold Game
 - #27 - Books API
-<!-- - #28 - Rendering Books
-- #29 - All Books
-- #30 - Burger Tracker 1
-- #31 - Burger Tracker 2
-- #32 - **Save Travels** *
-- #33 - **Dojos & Ninjas** *
-- #34 - **Login & Registration** * -->
 
 The asterisk (*) indicates that the assignment is a CORE assignment.
 
