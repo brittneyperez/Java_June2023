@@ -5,12 +5,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.javastack.booksapi.models.Book;
 import com.javastack.booksapi.services.BookService;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/books")
@@ -19,7 +24,7 @@ public class BookController {
 	@Autowired // ? handles dependency injection
 	BookService bookService;
 	
-	 @GetMapping("")
+	 @GetMapping("") // Displays all books
 	 public String index( Model model ) {
 		 List<Book> bookList = bookService.allBooks();
 		 
@@ -41,5 +46,24 @@ public class BookController {
 		 System.out.printf("%s\n - %s\n - %s\n - %s\n", book.getTitle(), book.getDescription(), book.getLanguage(), book.getNumberOfPages());
 		 model.addAttribute("book", book);
 		 return "show.jsp";
+	 }
+	 
+	 
+	 // * CREATE
+	 @GetMapping("/new") // renders create form
+	 public String createForm( @ModelAttribute("book") Book book ) {
+		return "create-form.jsp";
+	 }
+	 
+	 @PostMapping("") // this POST route is the create form's action and method to add new book to db
+	 public String create( 
+			 @ModelAttribute("book") @Valid Book book, // ModelAttribute will also be present in the form to create an obj of new book via POST method
+			 BindingResult result // this will aid in collecting errors
+		) {
+		 if (result.hasErrors()) {
+			return "create-form.jsp";
+		 }
+		 bookService.createBook(book);
+		 return "redirect:/books";
 	 }
 }

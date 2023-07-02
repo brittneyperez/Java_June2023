@@ -10,31 +10,35 @@
 	</head>
 	<body class="bg-info-subtle">
 		<div class="container col-lg-8 bg-white rounded-2 py-3 px-3 mt-3">	
-			<header class="text-center mb-3">
-				<h1 class="fs-3 fw-bold">All Books</h1>
-				<p class="text-secondary">Assignment #29 | PRACTICE</p>			
+			<header class="d-flex justify-content-around mb-3">
+				<span class="invisible">Placeholder</span>
+				<h3 class="fs-6 fw-bold text-secondary">All Books <span>•</span> Assignment #29 | PRACTICE</h3>
+				<a href="/books/new">Add a Book</a>
 			</header>
 			<!--  -->
-			<table class="table table-hover table-bordered text-center">
-				<thead class="table-dark">
-					<tr>
-						<th>id</th>
-						<th>Title</th>
-						<th>Language</th>
-						<th># Pages</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="book" items="${books}">
-						<tr >
-							<td><c:out value="${book.id}" /></td>
-							<td><a href="/books/${book.id}" class="text-info-emphasis"><c:out value="${book.title}" /></a></td>
-							<td><c:out value="${book.language}" /></td>
-							<td><c:out value="${book.numberOfPages}" /></td>
+			<div class="text-center">
+				<h1 class="fs-2 fw-bold">All Books</h1>
+				<table class="table table-hover table-bordered mt-3">
+					<thead class="table-dark">
+						<tr>
+							<th>id</th>
+							<th>Title</th>
+							<th>Language</th>
+							<th># Pages</th>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						<c:forEach var="book" items="${books}">
+							<tr >
+								<td><c:out value="${book.id}" /></td>
+								<td><a href="/books/${book.id}" class="text-info-emphasis"><c:out value="${book.title}" /></a></td>
+								<td><c:out value="${book.language}" /></td>
+								<td><c:out value="${book.numberOfPages}" /></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		
 	</body>

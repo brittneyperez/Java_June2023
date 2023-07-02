@@ -37,26 +37,27 @@ public class Book {
 	private Long id;
 	
 	@NotNull // ? meaning that this field cannot be null
-	@Size(min = 5, max = 200)
+	@Size(min = 5, max = 200, message="Title must be at least 5 characters.")
 	private String title;
 	
 	
-	// @NotNull
-	// @Size(min = 5, max = 200)
-	// private String description;
-	@NotBlank
+	@NotNull
+	@Size(min = 5, max = 200, message="Description must be at least 5 characters.")
 	private String description;
+	// @NotBlank
+	// private String description;
 	
 	
-	@NotEmpty
+	@NotEmpty(message="Language is required.")
 	private String language;
 	// @NotNull
-	// @Size(min = 3, max = 40)
+	// @Size(min = 3, max = 40, message="Language is required.")
 	// private String language;
 	
-	@NotNull
-	@Min(100)
+	@NotNull(message="Must not be blank.")
+	@Min(value=50)
 	private Integer numberOfPages;
+	
 	
 	// ? This will not allow the createdAt column to be updated after creation
 	@Column(updatable=false)

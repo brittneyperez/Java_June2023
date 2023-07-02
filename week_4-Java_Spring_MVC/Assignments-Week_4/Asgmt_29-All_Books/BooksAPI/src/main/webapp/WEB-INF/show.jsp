@@ -10,9 +10,10 @@
 	</head>
 	<body class="bg-info-subtle">
 		<div class="container col-lg-8 bg-white rounded-2 py-3 px-3 mt-3">	
-			<header class="text-center mb-3">
-				<h1 class="fs-3 fw-bold">All Books</h1>
-				<p class="text-secondary">Assignment #29 | PRACTICE</p>			
+			<header class="d-flex justify-content-around mb-3">
+				<a href="/books">All Books</a>
+				<h3 class="fs-6 fw-bold text-secondary">All Books <span>•</span> Assignment #29 | PRACTICE</h3>
+				<span class="invisible">Placeholder</span>
 			</header>
 			<!--  -->
 			<div>
