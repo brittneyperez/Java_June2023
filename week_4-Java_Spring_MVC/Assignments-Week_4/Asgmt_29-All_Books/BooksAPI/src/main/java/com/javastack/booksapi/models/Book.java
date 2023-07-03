@@ -43,7 +43,7 @@ public class Book {
 	
 	
 	@NotBlank(message = "Description is required.")
-	@Size(min = 5, max = 200, message="Description must be at least 5 characters.")
+	@Size(min = 5, max = 250, message = "Description must be between 5 characters and 250 characters.")
 	private String description;
 	
 	
@@ -87,13 +87,25 @@ public class Book {
 	
 	
 	// * Validations METHODS
+	// Custom validation method for the title
 //	public String validateTitle() {
 //		if (title == null || title.trim().isEmpty()) {
-//			return "Title is required";
-//		} else if (title.length() > 0 && title.length() < 5) {
-//			return "TItle needs to be at least 5 characters.";
+//			return "Title is required.";
+//		} else if (title.length() < 5) {
+//			return "Title must be at least 5 characters.";
 //		}
 //		return null;
+//	}
+	// Custom validation method for the description
+//	public String validateDescription() {
+//    	if (description == null || description.trim().isEmpty()) {
+//    		return "Description is required.";
+//    	} else if (description.length() < 5) {
+//    		return "Description must be at least 5 characters.";
+//    	} else if (description.length() > 250) {
+//    		return "Description is too long.";
+//    	}
+//    	return null;
 //	}
 	
 	
