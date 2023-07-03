@@ -12,7 +12,7 @@
 		<div class="container col-lg-8 bg-white rounded-2 py-3 px-3 mt-3">	
 			<header class="d-flex justify-content-around mb-3">
 				<span class="invisible">Placeholder</span>
-				<h3 class="fs-6 fw-bold text-secondary">All Books <span>•</span> Assignment #29 | PRACTICE</h3>
+				<h3 class="fs-6 fw-bold text-secondary">All Books <span>•</span> #29 | PRACTICE</h3>
 				<a href="/books/new">Add a Book</a>
 			</header>
 			<!--  -->
@@ -25,6 +25,7 @@
 							<th>Title</th>
 							<th>Language</th>
 							<th># Pages</th>
+							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -34,6 +35,13 @@
 								<td><a href="/books/${book.id}" class="text-info-emphasis"><c:out value="${book.title}" /></a></td>
 								<td><c:out value="${book.language}" /></td>
 								<td><c:out value="${book.numberOfPages}" /></td>
+								<td class="d-flex flex-column flex-md-row align-items-center justify-content-around">
+									<a href="/books/${book.id}/edit">Edit</a>
+									<form action="/books/${book.id}" method="post">
+										<input type="hidden" name="_method" value="delete" />
+										<input type="submit" class="btn btn-danger btn-sm" value="Delete" />
+									</form>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>

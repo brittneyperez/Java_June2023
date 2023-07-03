@@ -12,8 +12,8 @@
 		<div class="container col-lg-8 bg-white rounded-2 py-3 px-3 mt-3">	
 			<header class="d-flex justify-content-around mb-3">
 				<a href="/books">All Books</a>
-				<h3 class="fs-6 fw-bold text-secondary">All Books <span>•</span> Assignment #29 | PRACTICE</h3>
-				<span class="invisible">Placeholder</span>
+				<h3 class="fs-6 fw-bold text-secondary">All Books <span>•</span> #29 | PRACTICE</h3>
+				<a href="/books/new">Add a Book</a>
 			</header>
 			<!--  -->
 			<div>

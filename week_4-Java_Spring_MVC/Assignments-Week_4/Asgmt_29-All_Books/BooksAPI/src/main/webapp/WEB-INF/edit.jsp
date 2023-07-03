@@ -15,15 +15,16 @@
 			<header class="d-flex justify-content-around mb-3">
 				<a href="/books">All Books</a>
 				<h3 class="fs-6 fw-bold text-secondary">All Books <span>•</span> #29 | PRACTICE</h3>
-				<span class="invisible">Placeholder</span>
+				<a href="/books/new">Add a Book</a>
 			</header>
 			<!--  -->
 			<div id="form_div">
 				<div class="text-center">
-					<h1 class="fs-2 fw-bold">Add a Book</h1>
+					<h1 class="fs-2 fw-bold">Edit a Book</h1>
 				</div>
 				<!--  -->
-				<form:form action="/books" method="post" modelAttribute="book">
+				<form:form action="/books/${book.id}" method="post" modelAttribute="book">
+					<input type="hidden" name="_method" value="put" />
   					<!-- Title input -->
 				    <div class="form-group row mx-5 mb-3">
 				        <form:label path="title" class="col-md-3 col-form-label"><strong>Title:</strong></form:label>

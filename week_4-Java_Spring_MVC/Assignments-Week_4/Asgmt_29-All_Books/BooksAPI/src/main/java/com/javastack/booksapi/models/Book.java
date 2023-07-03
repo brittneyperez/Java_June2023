@@ -35,17 +35,16 @@ public class Book {
 	@Id // ? primary key
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@NotNull // ? meaning that this field cannot be null
+
+	// ? meaning that this field cannot be null
+	@NotBlank(message = "Title is required.")
 	@Size(min = 5, max = 200, message="Title must be at least 5 characters.")
 	private String title;
 	
 	
-	@NotNull
+	@NotBlank(message = "Description is required.")
 	@Size(min = 5, max = 200, message="Description must be at least 5 characters.")
 	private String description;
-	// @NotBlank
-	// private String description;
 	
 	
 	@NotEmpty(message="Language is required.")
@@ -85,6 +84,18 @@ public class Book {
 	protected void onUpdate(){
 		this.updatedAt = new Date();
 	}
+	
+	
+	// * Validations METHODS
+//	public String validateTitle() {
+//		if (title == null || title.trim().isEmpty()) {
+//			return "Title is required";
+//		} else if (title.length() > 0 && title.length() < 5) {
+//			return "TItle needs to be at least 5 characters.";
+//		}
+//		return null;
+//	}
+	
 	
 	// * GETTERS & SETTERS
 	public Long getId() {
