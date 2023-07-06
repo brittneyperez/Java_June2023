@@ -62,6 +62,7 @@ The `TweetRepository` interface extends `CrudRepository` to access CRUD (Create,
 The `TweetService` class acts as an intermediary between the repository and the controller. It is annotated with `@Service` to mark it as a Spring service component. The service class uses the `TweetRepository` by autowiring it as a dependency. It provides methods for creating and retrieving tweets from the repository. The `create()` method saves a new tweet to the database, while the `getAll()` method retrieves all tweets from the database. It also includes a method `getById()` to retrieve a specific tweet by its ID.
 
 ### **RestController: TweetApiController.java**
+
 The `TweetApiController` class is a RESTful controller that handles HTTP requests related to tweets. It is annotated with `@RestController` to indicate that it handles REST API endpoints. The controller communicates with the `TweetService` by autowiring it as a dependency. The controller defines several endpoints: 
 - `createTweet()`: a `POST` endpoint that receives tweet content and an imaginary integer attribute as request parameters. It creates a new `Tweet` object and saves it using the `TweetService`.
 - `index()`: a `GET` endpoint that retrieves all tweets from the `TweetService`.
