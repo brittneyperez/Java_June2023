@@ -119,30 +119,30 @@ In summary, **Dojos_and_Ninjas** allows users to create and manage dojos and nin
 ### Screenshots
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">
-<figure style="max-width: 300px;">
+<figure style="max-width: 200px;">
     <img src="dojos_and_ninjas-readme-assets/index-homepage-desktop.png" alt="index-homepage-desktop">
     <figcaption>Index Homepage (Desktop)</figcaption>
 </figure>
 
-<figure style="max-width: 300px;">
+<figure style="max-width: 200px;">
     <img src="dojos_and_ninjas-readme-assets/index-homepage-mobile.png" alt="index-homepage-mobile">
     <figcaption>Index Homepage (Mobile)</figcaption>
 </figure>
 
-<figure style="max-width: 300px;">
+<figure style="max-width: 200px;">
     <img src="dojos_and_ninjas-readme-assets/ninja-enrollment-form-desktop.png" alt="ninja-enrollment-form-desktop" >
     <figcaption>Ninja Enrollment Form (Desktop)</figcaption>
 </figure>
-<figure style="max-width: 300px;">
+<figure style="max-width: 200px;">
     <img src="dojos_and_ninjas-readme-assets/ninja-enrollment-form-mobile.png" alt="ninja-enrollment-form-mobile">
     <figcaption>Ninja Enrollment Form (Mobile)</figcaption>
 </figure>
 
-<figure style="max-width: 300px;">
+<figure style="max-width: 200px;">
     <img src="dojos_and_ninjas-readme-assets/dojo-show-ninjas.png" alt="dojo-show-ninjas">
     <figcaption>Dojo Showing No Ninjas</figcaption>
 </figure>
-<figure style="max-width: 300px;">
+<figure style="max-width: 200px;">
     <img src="dojos_and_ninjas-readme-assets/dojo-show-none.png" alt="dojo-show-none">
     <figcaption>Dojo Showing No Ninjas</figcaption>
 </figure>
