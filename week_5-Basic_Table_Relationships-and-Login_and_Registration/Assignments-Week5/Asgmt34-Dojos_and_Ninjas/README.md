@@ -115,3 +115,35 @@ The views are written in JSP (JavaServer Pages) and use Bootstrap for styling. T
 ---
 
 In summary, **Dojos_and_Ninjas** allows users to create and manage dojos and ninjas. It implements a one-to-many relationship between dojos and ninjas, provides CRUD functionality through repositories and services, and uses a controller to handle HTTP requests and render views for the user interface.
+
+### Screenshots
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">
+<figure style="max-width: 300px;">
+    <img src="dojos_and_ninjas-readme-assets/index-homepage-desktop.png" alt="index-homepage-desktop">
+    <figcaption>Index Homepage (Desktop)</figcaption>
+</figure>
+
+<figure style="max-width: 300px;">
+    <img src="dojos_and_ninjas-readme-assets/index-homepage-mobile.png" alt="index-homepage-mobile">
+    <figcaption>Index Homepage (Mobile)</figcaption>
+</figure>
+
+<figure style="max-width: 300px;">
+    <img src="dojos_and_ninjas-readme-assets/ninja-enrollment-form-desktop.png" alt="ninja-enrollment-form-desktop" >
+    <figcaption>Ninja Enrollment Form (Desktop)</figcaption>
+</figure>
+<figure style="max-width: 300px;">
+    <img src="dojos_and_ninjas-readme-assets/ninja-enrollment-form-mobile.png" alt="ninja-enrollment-form-mobile">
+    <figcaption>Ninja Enrollment Form (Mobile)</figcaption>
+</figure>
+
+<figure style="max-width: 300px;">
+    <img src="dojos_and_ninjas-readme-assets/dojo-show-ninjas.png" alt="dojo-show-ninjas">
+    <figcaption>Dojo Showing No Ninjas</figcaption>
+</figure>
+<figure style="max-width: 300px;">
+    <img src="dojos_and_ninjas-readme-assets/dojo-show-none.png" alt="dojo-show-none">
+    <figcaption>Dojo Showing No Ninjas</figcaption>
+</figure>
+</div>
