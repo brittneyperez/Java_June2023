@@ -124,11 +124,11 @@ In summary, the project consists of several key files that work together to deli
     <figcaption>Login and Registration - Responsiveness Demo</figcaption>
 </figure>
 <figure style="margin-bottom: 2rem;">
-    <img src="loginreg-readme-assets/Login_and_Registration-Validations-Demo.GIF" alt="Login_and_Registration-Validations-Demo" width="450">
+    <img src="loginreg-readme-assets/Login_and_Registration-Field-Validations-Demo.GIF" alt="Login_and_Registration-Field-Validations-Demo" width="450">
     <figcaption>Login and Registration - Validations Demo</figcaption>
 </figure>
 <figure style="margin-bottom: 2rem;">
-    <img src="loginreg-readme-assets/Login_and_Registration-Demo.GIF" alt="Login_and_Registration-Demo" width="450">
+    <img src="loginreg-readme-assets/Login_and_Registration-App-Demo.GIF" alt="Login_and_Registration-App-Demo" width="450">
     <figcaption>Login and Registration - Demo</figcaption>
 </figure>
 </div>
