@@ -119,16 +119,16 @@ In summary, the project consists of several key files that work together to deli
 ### Screenshots
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">
-<figure style="width: 300px; margin-bottom: 2rem;">
-    <img src="loginreg-readme-assets/Login_and_Registration-Responsiveness-Demo.GIF" alt="Login_and_Registration-Responsiveness-Demo">
+<figure style="margin-bottom: 2rem;">
+    <img src="loginreg-readme-assets/Login_and_Registration-Responsiveness-Demo.GIF" alt="Login_and_Registration-Responsiveness-Demo" width="450">
     <figcaption>Login and Registration - Responsiveness Demo</figcaption>
 </figure>
-<figure style="width: 300px; margin-bottom: 2rem;">
-    <img src="loginreg-readme-assets/Login_and_Registration-Validations-Demo.GIF" alt="Login_and_Registration-Validations-Demo">
+<figure style="margin-bottom: 2rem;">
+    <img src="loginreg-readme-assets/Login_and_Registration-Validations-Demo.GIF" alt="Login_and_Registration-Validations-Demo" width="450">
     <figcaption>Login and Registration - Validations Demo</figcaption>
 </figure>
-<figure style="width: 300px; margin-bottom: 2rem;">
-    <img src="loginreg-readme-assets/Login_and_Registration-Demo.GIF" alt="Login_and_Registration-Demo">
+<figure style="margin-bottom: 2rem;">
+    <img src="loginreg-readme-assets/Login_and_Registration-Demo.GIF" alt="Login_and_Registration-Demo" width="450">
     <figcaption>Login and Registration - Demo</figcaption>
 </figure>
 </div>
