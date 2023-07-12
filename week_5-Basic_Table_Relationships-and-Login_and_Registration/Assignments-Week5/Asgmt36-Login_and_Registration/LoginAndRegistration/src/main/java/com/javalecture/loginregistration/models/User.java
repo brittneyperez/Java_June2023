@@ -1,6 +1,6 @@
 package com.javalecture.loginregistration.models;
 
-//import java.time.LocalDate;
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,8 +16,8 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-//import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -59,12 +59,14 @@ public class User {
 	
 	@NotEmpty(message = "Username is required.")
 	@Size(min = 3, message = "Must be at least 3 characters.")
-	@Pattern(regexp = "^[a-zA-Z0-9_]+$", message = "Username can only contain letters, numbers, and underscores.")
+	@Pattern(regexp = "^[a-zA-Z0-9_.]+$", message = "Username can only contain letters, numbers, underscores, and periods.")
 	@Column(unique = true)
 	private String username;
 	
 	@NotEmpty(message = "Password is required.")
 	@Size(min = 8, max = 128, message = "Must be at least 8 characters.")
+	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*]).*$", 
+		message = "Password must contain at least one lowercase letter, one uppercase letter, one number, and one special symbol.")
 	private String password;
 	
 	@Transient
@@ -72,9 +74,10 @@ public class User {
 	@Size(min = 8, max = 128, message = "Must be at least 8 characters.")
 	private String confirmPassword;
 	
-//	@NotNull(message = "Date of Birth is required.")
-//	private LocalDate dateOfBirth; // date picker
-//	
+	@NotNull(message = "Date of Birth is required.")
+	private LocalDate dateOfBirth; // date picker
+	
+	
 //	@NotNull(message = "Reasons for Applying is required.")
 //	private String reasonsForApplying; // checkbox
 //	
@@ -90,8 +93,9 @@ public class User {
 	
 	// * CONSTRUCTORS -----------------------------
 	public User() {}
-	public User( String firstName, String lastName, String email, String username, String password, String confirmPassword
-			/* LocalDate dateOfBirth, String reasonsForApplying, String codingExperience, String favoriteLanguage */
+	public User( String firstName, String lastName, String email, String username, String password, String confirmPassword,
+			LocalDate dateOfBirth
+			/* , String reasonsForApplying, String codingExperience, String favoriteLanguage */
 			) {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -99,7 +103,7 @@ public class User {
 		this.username = username;
 		this.password = password;
 		this.confirmPassword = confirmPassword;
-//		this.dateOfBirth = dateOfBirth;
+		this.dateOfBirth = dateOfBirth;
 //		this.reasonsForApplying = reasonsForApplying;
 //		this.codingExperience = codingExperience;
 //		this.favoriteLanguage = favoriteLanguage;
@@ -159,13 +163,12 @@ public class User {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
-	
-//	public LocalDate getDateOfBirth() {
-//		return dateOfBirth;
-//	}
-//	public void setDateOfBirth(LocalDate dateOfBirth) {
-//		this.dateOfBirth = dateOfBirth;
-//	}
+	public LocalDate getDateOfBirth() {
+		return dateOfBirth;
+	}
+	public void setDateOfBirth(LocalDate dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
 //	public String getReasonsForApplying() {
 //		return reasonsForApplying;
 //	}

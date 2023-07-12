@@ -1,5 +1,9 @@
 package com.javalecture.loginregistration.controllers;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -72,7 +76,19 @@ public class MainController {
 	@GetMapping("/home")
 	public String home( Model model, HttpSession session ) {
 		Long userId = (long) session.getAttribute("userId");
-		model.addAttribute("currentUser", this.uService.findUserById(userId));
+		User currentUser = this.uService.findUserById(userId);
+		
+		// Calculate age:
+		LocalDate currentDate = LocalDate.now();
+		int userAge = Period.between(currentUser.getDateOfBirth(), currentDate).getYears();
+		
+		// Format DOB:
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy");
+		String formattedDOB = currentUser.getDateOfBirth().format(dateFormatter);
+		
+		model.addAttribute("currentUser", currentUser);
+		model.addAttribute("userDOB", formattedDOB);
+		model.addAttribute("age", userAge);
 		return "dashboard.jsp";
 	}
 	

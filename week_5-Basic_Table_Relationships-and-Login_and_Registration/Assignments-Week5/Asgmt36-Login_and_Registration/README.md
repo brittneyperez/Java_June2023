@@ -65,7 +65,7 @@ These dependencies provide the necessary functionality and libraries for develop
 
 ### The Models: **`User.java`** and **`LoginUser.java`**
 
-1. **User.java**: This file represents the model for a user in the application. It is annotated with `@Entity` to indicate that it is an entity to be persisted in the database. It contains member variables corresponding to user attributes such as `id`, `firstName`, `lastName`, `email`, `username`, `password`, and `confirmPassword`. The class includes annotations for validation, such as `@NotEmpty`, `@Size`, `@Email`, and `@Pattern`, which define the validation rules for each attribute. Additionally, there are annotations and methods for date fields (`createdAt` and `updatedAt`) to handle the persistence lifecycle.
+The `User.java` file is the model class representing the user entity. It contains various member variables with corresponding getters and setters. The class is annotated with JPA annotations to define the mapping to the database table. Additionally, it includes validation annotations from the Jakarta Bean Validation API to enforce data integrity. The newly added field `dateOfBirth` represents the user's date of birth and is annotated with `@NotNull` to ensure it is provided. The password field has also been updated with a new validation annotation `@Pattern` to enforce a secure password that includes at least one lowercase letter, one uppercase letter, one number, and one special symbol.
 
 2. **LoginUser.java**: This file represents the validator model for the login functionality. It contains member variables `loginCredential` and `password`, which correspond to the login form fields. The class includes annotations for validation, such as `@NotEmpty` and `@Size`, to enforce validation rules for the login form. This class is used for validating the login credentials provided by the user during the login process.
 
@@ -75,55 +75,55 @@ These files play a crucial role in the **LoginAndRegistration** project. `User.j
 
 ### The Repository: **`UserRepository.java`**
 
-The `UserRepository` interface extends the `CrudRepository` interface provided by Spring Data. It allows the application to perform CRUD operations on the `User` entity. The repository includes the following additional methods specific to the user model:
+The `UserRepository` interface serves as the repository for the `User` entity, providing methods to interact with the database. It extends the `CrudRepository` interface, which provides basic CRUD (Create, Read, Update, Delete) operations. The `UserRepository` interface includes additional custom methods to retrieve users by their email, username, and date of birth. These methods utilize the `Optional` class to handle potential null values returned from the database queries. The repository includes the following additional methods specific to the user model:
 - `findAll()`: Retrieves all users from the database.
 - `findByEmail(String email)`: Retrieves a user by their email.
 - `findByUsername(String username)`: Retrieves a user by their username.
+- `findByDateOfBirth(LocalDate dateOfBirth)`: Retrieves a user by their dateOfBirth.
 
 These methods are used to query the database and retrieve user information based on specific criteria.
 
 ### The Service: **`UserService.java`**
 
-The `UserService` class is a service component responsible for handling the business logic related to user operations. It interacts with the `UserRepository` to perform database operations and provides additional functionalities. The class includes the following methods:
+The `UserService` class is responsible for implementing the business logic related to user operations. It is annotated with `@Service` to indicate that it's a service component in the Spring framework. The class includes the `UserRepository` as a dependency, which is injected using the `@Autowired` annotation. The `UserService` class provides several methods:
+- `findUserById`: This method retrieves an existing user by their ID from the database. It utilizes the `findById` method of the `UserRepository`.
 
-1. `findUserById(Long id)`: Retrieves an existing user by their ID. It calls the `findById()` method of the `UserRepository` to retrieve the user from the database.
+- `validateAge`: This private method is used to validate the age of a user during registration. It calculates the user's age based on the provided date of birth and the current date using the `LocalDate` class. If the age is less than 10, it adds a validation error to the `BindingResult`.
 
-2. `registerUser(User newUser, BindingResult result)`: Registers a new user in the system. It performs various validations using `BindingResult` and checks if the email and username provided by the user already exist in the database. If the validations pass, it hashes the user's password using BCrypt and saves the user to the database using the `UserRepository`.
+- `registerUser`: This method is used to register a new user. It performs various validations, such as checking if the email and username are already registered, ensuring the passwords match, and validating the user's age using the `validateAge` method. If any validation errors occur, the method returns `null`. If all validations pass, the user's password is hashed using BCrypt, and the user is saved to the database using the `save` method of the `UserRepository`.
 
-3. `loginUser(LoginUser newLoginObject, BindingResult result)`: Authenticates a user based on the provided login credentials (email/username and password). It first checks if the login credential is an email and searches for a user with the given email in the database. If not found, it searches for a user with the given username. If a user is found, it compares the hashed password with the provided password using BCrypt. If the credentials are valid, it returns the user; otherwise, it adds an error message to the `BindingResult`.
+- `loginUser`: This method is used to authenticate a user during the login process. It checks if the login credential (email or username) exists in the database and verifies the password using BCrypt. If the credentials are valid, it returns the user object. If not, it adds a validation error to the `BindingResult` and returns `null`.
 
-The new feature added to the `loginUser` method is the ability to authenticate a user using their username. If the provided login credential is not an email, it searches for a user with the given username in the database and performs the password validation. This allows users to log in using either their email or username, providing flexibility in the authentication process.
+The `UserService` class plays a crucial role in implementing the application's logic for user registration, login, and age validation. It interacts with the `UserRepository` to perform database operations and uses BCrypt for secure password hashing.
 
 
 ## The Controller: **`MainController.java`**
 
-In the **`MainController`** class, the controller methods handle the HTTP requests and define the behavior for each request. Here's a summary of the role of each method:
+The `MainController` class is responsible for handling HTTP requests and mapping them to appropriate methods. It is annotated with `@Controller` to indicate that it's a controller component in the Spring framework. The class includes the `UserService` as a dependency, which is injected using the `@Autowired` annotation.
 
-1. The `index` method handles the GET request for the root URL ("/authenticate") and renders the index.jsp view. It adds a new user object (`newUser`) and a login user object (`loginUser`) to the model.
+The `MainController` class provides several methods:
+- `index`: This method handles the GET request to the root URL ("/authenticate"). It initializes the `newUser` and `loginUser` objects to be used in the registration and login forms, respectively. It returns the "index.jsp" view.
 
-2. The `register` method handles the POST request for the "/authenticate/register" URL. It receives the form data from the registration form (`registeringUser`) and performs user registration by calling the `registerUser` method of the `UserService`. If there are validation errors (`result.hasErrors()`), it adds the necessary attributes to the model and returns to the index.jsp view. If the registration is successful, it sets the user ID in the session and redirects to the "/authenticate/home" URL.
+- `register`: This method handles the POST request to the "/register" URL. It receives the `registeringUser` object from the registration form, along with the `BindingResult`, `Model`, and `HttpSession` objects. It calls the `registerUser` method of the `UserService` to perform user registration. If there are validation errors, it returns the "index.jsp" view with the validation errors. If the registration is successful, it stores the user's ID in the session and redirects to the "/authenticate/home" URL.
 
-3. The `login` method handles the POST request for the "/authenticate/login" URL. It receives the form data from the login form (`newLogin`) and performs user login by calling the `loginUser` method of the `UserService`. If there are validation errors (`result.hasErrors()`), it adds the necessary attributes to the model and returns to the index.jsp view. If the login is successful, it sets the user ID in the session and redirects to the "/authenticate/home" URL.
+- `login`: This method handles the POST request to the "/login" URL. It receives the `newLoginObject` object from the login form, along with the `BindingResult`, `Model`, and `HttpSession` objects. It calls the `loginUser` method of the `UserService` to authenticate the user. If there are validation errors, it returns the "index.jsp" view with the validation errors. If the login is successful, it stores the user's ID in the session and redirects to the "/authenticate/home" URL.
 
-4. The `home` method handles the GET request for the "/authenticate/home" URL. It retrieves the user ID from the session, uses the `findUserById` method of the `UserService` to get the user object, and adds it to the model. It renders the dashboard.jsp view, which displays the user's information.
+- `home`: This method handles the GET request to the "/home" URL. It retrieves the user's ID from the session and calls the `findUserById` method of the `UserService` to retrieve the corresponding user object. It calculates the user's age based on the current date and the user's date of birth using the `Period` class. It formats the date of birth using `DateTimeFormatter` and adds the user object, formatted date of birth, and age to the model. It returns the "dashboard.jsp" view.
 
-5. The `logout` method handles the GET request for the "/authenticate/logout" URL. It invalidates the session and redirects to the root URL ("/").
+- `logout`: This method handles the GET request to the "/logout" URL. It invalidates the session and redirects to the root URL ("/").
 
 ## The Views: **`index.jsp`** and **`dashboard.jsp`**
 
-In the views, the JSP files define the structure and content of the web pages. Here's a summary of each view:
+- The `index.jsp` view is the login and registration page. It includes two forms: one for user registration and another for user login. The forms use the Spring form tags (`form:form`, `form:input`, `form:label`, `form:errors`) to bind the form fields to the corresponding properties of the `newUser` and `loginUser` objects. The form fields are validated using the `form:errors` tag, which displays any validation errors returned by the controller. The registration form includes an additional field for the date of birth, which is represented as an input type of "date".
 
-1. `index.jsp`: This view displays the registration and login forms side by side. It uses form tags from the Spring framework to bind the form data to the `newUser` and `loginUser` objects. It also includes error messages using the `form:errors` tag for form validation.
+- The `dashboard.jsp` view is the user's dashboard page. It displays the user's details, such as their name, email, username, password (not actually displayed), date of birth, and the date they joined. The date of birth is formatted using the `fmt:formatDate` tag. The age is calculated in the controller and displayed alongside the formatted date of birth. The user can also click the "Logout" button, which triggers the `/authenticate/logout` URL to log out the user.
 
-2. `dashboard.jsp`: This view displays the user's information after a successful login. It retrieves the user object from the model and uses JSTL tags (`c:out` and `fmt:formatDate`) to display the user's data.
+These views provide a user-friendly interface for user registration, login, and displaying user details on the dashboard. The forms handle data binding and validation, while the controller coordinates the business logic and data retrieval from the `UserService`.
 
-The views utilize Bootstrap CSS classes for styling and provide a user-friendly interface for registration, login, and viewing the user's dashboard.
-
-Overall, the controller handles HTTP requests, performs necessary validations, interacts with the UserService to handle business logic, and the views are responsible for rendering the HTML content to display the user interface.
 
 ### Summary
 
-In conclusion, the **LoginAndRegistration** project demonstrates the implementation of user authentication and registration in a Java Spring application. The models `User` and `LoginUser` define the data structures and validations for user information and login credentials. The `UserRepository` interface provides methods to retrieve user data from the database, and the `UserService` class handles user registration, authentication, and password hashing. The `MainController` acts as the central component for request handling, coordinating the interaction between the views and the backend services. The views, implemented using JSP templates, provide user-friendly forms for registration, login, and a dashboard to display user information. The notable addition to this project is the ability to log in with a username, providing users with a convenient alternative to email-based authentication. By following this README, developers can gain a comprehensive understanding of the project's structure and contribute to its further development.
+In conclusion, the **LoginAndRegistration** project demonstrates the implementation of user authentication and registration in a Java Spring application. The models `User` and `LoginUser` define the data structures and validations for user information and login credentials. The `UserRepository` interface provides methods to retrieve user data from the database, and the `UserService` class handles user registration, authentication, and password hashing. The `MainController` acts as the central component for request handling, coordinating the interaction between the views and the backend services. The views, implemented using JSP templates, provide user-friendly forms for registration, login, and a dashboard to display user information. The notable addition to this project is the ability to log in with a username, providing users with a convenient alternative to email-based authentication.
 
 
 ### Screenshots

@@ -26,8 +26,15 @@
 				<p><strong>Your email is</strong>: <c:out value="${currentUser.email}" /></p>
 				<p><strong>Your username is</strong>: @<c:out value="${currentUser.username}" /></p>
 				<p><strong>Your Password is</strong>: You didn't think we'd actually show it to you, right?</p>
-				<p><strong>Joined</strong>: <fmt:formatDate value="${currentUser.createdAt}" pattern="MM/dd/yyyy" /></p>
 				
+				<div id="Dashboard_AdditionalDetails" class="mt-3">
+					<h2 class="fs-4">Additional Details</h2>		
+					<p>
+						<strong>Date of Birth</strong>: <c:out value="${userDOB}" /> (<c:out value="${age}" /> yrs)
+					</p>
+				</div>
+				
+				<p><strong>Joined</strong>: <fmt:formatDate value="${currentUser.createdAt}" pattern="MM/dd/yyyy" /></p>
 				<a href="/authenticate/logout" class="btn btn-danger mt-3">Logout</a>
 			</div>
 		</div>

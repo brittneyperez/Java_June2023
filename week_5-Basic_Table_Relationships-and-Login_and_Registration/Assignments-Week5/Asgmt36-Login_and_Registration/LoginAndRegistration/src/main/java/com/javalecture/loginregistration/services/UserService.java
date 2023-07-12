@@ -1,5 +1,7 @@
 package com.javalecture.loginregistration.services;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Optional;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -23,6 +25,18 @@ public class UserService {
 		return existingUser;
 	}
 	
+	// Private method to validate registeringUser's age for registerUser() method:
+	private void validateAge( User newUser, BindingResult result ) {
+		LocalDate currentDate = LocalDate.now();
+		LocalDate dateOfBirth = newUser.getDateOfBirth();
+		if (dateOfBirth != null) {
+			int age = Period.between(dateOfBirth, currentDate).getYears();
+			if (age < 10) {
+				result.rejectValue("dateOfBirth", "InvalidAge", "You must be at least 10 years old to register.");
+			}
+		}
+	}
+	
 	// Method 2: Register a user.
 	public User registerUser( User newUser, BindingResult result ) {
 		
@@ -43,12 +57,15 @@ public class UserService {
 			result.rejectValue("confirmPassword", "Matches", "Passwords must match.");
 		}
 		
-		// 3 Return "null" if any errors for the controller to handle validations.
+		// 3 Perform age validation.
+		validateAge(newUser, result);
+		
+		// 4 Return "null" if any errors for the controller to handle validations.
 		if (result.hasErrors()) {
 			return null;
 		}
 		
-		// 4 If everything is valid, hash and set password to save user to db.
+		// 5 If everything is valid, hash and set password to save user to db.
 		String hashed = BCrypt.hashpw(newUser.getPassword(), BCrypt.gensalt());
 		newUser.setPassword(hashed);
 		User completeRegistration = this.uRepo.save(newUser);

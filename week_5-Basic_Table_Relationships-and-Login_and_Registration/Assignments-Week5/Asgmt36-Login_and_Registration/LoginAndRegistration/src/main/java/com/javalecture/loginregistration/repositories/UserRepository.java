@@ -1,5 +1,6 @@
 package com.javalecture.loginregistration.repositories;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,4 +20,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	
 	// Retrieves a user by their username:
 	Optional<User> findByUsername(String username);
+	
+	// Retrieves a user by their username:
+	Optional<User> findByDateOfBirth(LocalDate dateOfBirth);
 }

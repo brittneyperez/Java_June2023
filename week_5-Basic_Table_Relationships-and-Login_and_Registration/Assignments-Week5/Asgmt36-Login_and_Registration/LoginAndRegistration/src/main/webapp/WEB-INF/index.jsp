@@ -83,6 +83,14 @@
 									<form:errors path="confirmPassword" class="d-flex justify-content-center text-danger" />
 								</div>
 							</div>
+							<!-- Password Input -->
+							<div class="form-group row mb-3">
+								<form:label path="dateOfBirth" for="passInput" class="col-md-4 col-form-label">Date of Birth:</form:label>
+								<div class="col-xl-8">
+									<form:input type="date" path="dateOfBirth" id="passInput" autocomplete="off" class="form-control" />
+									<form:errors path="dateOfBirth" class="d-flex justify-content-center text-danger" />
+								</div>
+							</div>
 							<!-- Submit -->
 							<div class="d-flex justify-content-end mb-3">
 								<input type="submit" value="Register" class="btn btn-primary" />
