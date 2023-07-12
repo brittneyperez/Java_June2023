@@ -159,6 +159,7 @@ public class User {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
+	
 //	public LocalDate getDateOfBirth() {
 //		return dateOfBirth;
 //	}

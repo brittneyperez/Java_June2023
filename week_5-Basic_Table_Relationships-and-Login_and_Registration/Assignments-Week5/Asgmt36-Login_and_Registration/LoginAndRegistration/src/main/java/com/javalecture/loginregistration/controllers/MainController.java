@@ -55,10 +55,10 @@ public class MainController {
 	// * LOGIN
 	@PostMapping("/login")
 	public String login(
-			@Valid @ModelAttribute("loginUser") LoginUser newLogin,
+			@Valid @ModelAttribute("loginUser") LoginUser newLoginObject,
 			BindingResult result, Model model, HttpSession session
 			) {
-		User thisUser = this.uService.loginUser(newLogin, result);
+		User thisUser = this.uService.loginUser(newLoginObject, result);
 		if( result.hasErrors() ) {
 			model.addAttribute("newUser", new User());
 			return "index.jsp";

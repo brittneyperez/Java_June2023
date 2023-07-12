@@ -4,7 +4,7 @@
 
 <!-- **Dojos & Ninjas** is a Java Spring project designed to track ninjas and the dojos they're being trained in. The project follows the MVC (Model-View-Controller) architecture to manage and display dojo and ninja data through JSP (JavaServer Pages) for the view layer. -->
 
-**LoginAndRegistration** is a Java Spring project that provides user authentication and registration functionality. It incorporates server-side validations, authentication logic, password hashing using BCrypt, session management, and user data retrieval. The project follows the MVC (Model-View-Controller) architectural pattern and utilizes Spring Boot, JPA (Java Persistence API), and Thymeleaf templating engine. With its robust features and clean code structure, **LoginAndRegistration** serves as a solid foundation for building secure user authentication systems in Spring applications.
+The **LoginAndRegistration** project is a Java Spring application that provides user authentication and registration functionality. It allows users to create an account, log in, and access their personalized dashboard. The project implements server-side validations, password hashing using BCrypt, and the option to log in with either an email or username. This README provides an overview of the project structure, file descriptions, and highlights the newly added feature of logging in with a username. It serves as a guide for understanding the purpose of each file and how they contribute to the overall functionality of the application.
 
 ## Configuration
 
@@ -65,27 +65,34 @@ These dependencies provide the necessary functionality and libraries for develop
 
 ### The Models: **`User.java`** and **`LoginUser.java`**
 
-The **`User.java`** file represents the `User` model in the Login and Registration application. It is an entity class annotated with `@Entity` to indicate that it is mapped to a database table. The class defines various member variables, such as `id`, `createdAt`, `updatedAt`, `firstName`, `lastName`, `email`, `username`, `password`, and `confirmPassword`, along with their respective getters and setters. It also includes validation annotations from the `jakarta.validation.constraints` package to enforce data validation rules. The class has additional lifecycle callback methods `@PrePersist` and `@PreUpdate` to set the `createdAt` and `updatedAt` timestamps before saving or updating the entity.
+1. **User.java**: This file represents the model for a user in the application. It is annotated with `@Entity` to indicate that it is an entity to be persisted in the database. It contains member variables corresponding to user attributes such as `id`, `firstName`, `lastName`, `email`, `username`, `password`, and `confirmPassword`. The class includes annotations for validation, such as `@NotEmpty`, `@Size`, `@Email`, and `@Pattern`, which define the validation rules for each attribute. Additionally, there are annotations and methods for date fields (`createdAt` and `updatedAt`) to handle the persistence lifecycle.
 
-The **`LoginUser.java`** file represents the `LoginUser` validator model in the Login and Registration application. It is a simple POJO (Plain Old Java Object) class that contains member variables `email` and `password`, along with their respective getters and setters. The class includes validation annotations from the `jakarta.validation.constraints` package to enforce data validation rules for the email and password fields. This class is used for validating the user login credentials.
+2. **LoginUser.java**: This file represents the validator model for the login functionality. It contains member variables `loginCredential` and `password`, which correspond to the login form fields. The class includes annotations for validation, such as `@NotEmpty` and `@Size`, to enforce validation rules for the login form. This class is used for validating the login credentials provided by the user during the login process.
 
-Both files play an essential role in the application. The `User.java` file defines the user model with its attributes and validation rules, while the `LoginUser.java` file provides a validator model specifically for validating the user login credentials. Together, these files help ensure data integrity and perform validations for user registration and authentication in the Login and Registration application.
+These files play a crucial role in the **LoginAndRegistration** project. `User.java` defines the structure and validation rules for the user model, while `LoginUser.java` provides the validation rules for the login form. Together, they enable the application to store and validate user information, allowing users to register, log in, and perform various authentication-related operations.
 
 ---
 
 ### The Repository: **`UserRepository.java`**
 
-The `UserRepository` interface is responsible for defining database operations related to the `User` entity. It extends the `CrudRepository` interface, which provides basic CRUD (Create, Read, Update, Delete) operations. The repository interface includes additional methods specific to user-related queries. In this case, it has methods such as `findAll()` to retrieve all users from the database, `findByEmail(String email)` to retrieve a user by their email, and `findByUsername(String username)` to retrieve a user by their username. These methods are implemented by the Spring Data JPA framework based on their naming conventions.
+The `UserRepository` interface extends the `CrudRepository` interface provided by Spring Data. It allows the application to perform CRUD operations on the `User` entity. The repository includes the following additional methods specific to the user model:
+- `findAll()`: Retrieves all users from the database.
+- `findByEmail(String email)`: Retrieves a user by their email.
+- `findByUsername(String username)`: Retrieves a user by their username.
+
+These methods are used to query the database and retrieve user information based on specific criteria.
 
 ### The Service: **`UserService.java`**
 
-The `UserService` class is a service component that handles the business logic related to user operations. It is annotated with `@Service` to indicate that it is a service bean in the Spring application context. The service class is responsible for interacting with the `UserRepository` to perform operations such as registering a new user and logging in a user.
+The `UserService` class is a service component responsible for handling the business logic related to user operations. It interacts with the `UserRepository` to perform database operations and provides additional functionalities. The class includes the following methods:
 
-- The `registerUser()` method in the `UserService` class performs the registration process for a new user. It first checks if the email and username provided by the user are already registered in the database. If a user with the same email or username exists, it adds appropriate error messages to the `BindingResult` object. It then validates the password and confirms password fields to ensure they match. If there are any validation errors, it returns `null` to indicate the registration was unsuccessful. If all validations pass, the password is hashed using `BCrypt` and the user is saved to the database using the `UserRepository`. The saved user object is returned as the result of the registration process.
+1. `findUserById(Long id)`: Retrieves an existing user by their ID. It calls the `findById()` method of the `UserRepository` to retrieve the user from the database.
 
-- The `loginUser()` method in the `UserService` class handles the user login process. It retrieves the user with the provided email from the database using the `UserRepository`. If the user exists, it checks if the password provided matches the hashed password stored in the database using `BCrypt`. If the password doesn't match, it adds an error message to the `BindingResult`. If the user does not exist in the database, it also adds an error message. Depending on the result, it either returns the logged-in user object or `null` to indicate a failed login.
+2. `registerUser(User newUser, BindingResult result)`: Registers a new user in the system. It performs various validations using `BindingResult` and checks if the email and username provided by the user already exist in the database. If the validations pass, it hashes the user's password using BCrypt and saves the user to the database using the `UserRepository`.
 
-Overall, the repository and service work together to provide data access and business logic for user-related operations in the Login and Registration application.
+3. `loginUser(LoginUser newLoginObject, BindingResult result)`: Authenticates a user based on the provided login credentials (email/username and password). It first checks if the login credential is an email and searches for a user with the given email in the database. If not found, it searches for a user with the given username. If a user is found, it compares the hashed password with the provided password using BCrypt. If the credentials are valid, it returns the user; otherwise, it adds an error message to the `BindingResult`.
+
+The new feature added to the `loginUser` method is the ability to authenticate a user using their username. If the provided login credential is not an email, it searches for a user with the given username in the database and performs the password validation. This allows users to log in using either their email or username, providing flexibility in the authentication process.
 
 
 ## The Controller: **`MainController.java`**
@@ -110,11 +117,14 @@ In the views, the JSP files define the structure and content of the web pages. H
 
 2. `dashboard.jsp`: This view displays the user's information after a successful login. It retrieves the user object from the model and uses JSTL tags (`c:out` and `fmt:formatDate`) to display the user's data.
 
-These views provide the user interface for registration, login, and displaying user information. The controller methods handle the requests and interact with the `UserService` to perform the necessary operations.
+The views utilize Bootstrap CSS classes for styling and provide a user-friendly interface for registration, login, and viewing the user's dashboard.
+
+Overall, the controller handles HTTP requests, performs necessary validations, interacts with the UserService to handle business logic, and the views are responsible for rendering the HTML content to display the user interface.
 
 ### Summary
 
-In summary, the project consists of several key files that work together to deliver a comprehensive user authentication and registration system. The `User` and `LoginUser` models define the structure and validation rules for user data. The `UserRepository` interface provides methods for database operations related to users, while the `UserService` handles user-related logic and interacts with the repository. The `MainController` acts as the central controller, handling requests, performing validations, and rendering views. The project includes well-designed views using JSP (JavaServer Pages) to provide a user-friendly interface. By combining these components, **LoginAndRegistration** delivers a robust and secure user authentication solution for Java Spring applications.
+In conclusion, the **LoginAndRegistration** project demonstrates the implementation of user authentication and registration in a Java Spring application. The models `User` and `LoginUser` define the data structures and validations for user information and login credentials. The `UserRepository` interface provides methods to retrieve user data from the database, and the `UserService` class handles user registration, authentication, and password hashing. The `MainController` acts as the central component for request handling, coordinating the interaction between the views and the backend services. The views, implemented using JSP templates, provide user-friendly forms for registration, login, and a dashboard to display user information. The notable addition to this project is the ability to log in with a username, providing users with a convenient alternative to email-based authentication. By following this README, developers can gain a comprehensive understanding of the project's structure and contribute to its further development.
+
 
 ### Screenshots
 

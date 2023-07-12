@@ -58,18 +58,32 @@ public class UserService {
 	// Method 3: Login a user.
 	public User loginUser( LoginUser newLoginObject, BindingResult result ) {
 		
-		// 1 Find the email in db based on the results binded to form, otherwise reject.
-		Optional<User> potentialUser = this.uRepo.findByEmail(newLoginObject.getEmail());
+		// 1 Assuming the loginCredential is an existing email/username (binded to the form), we will search the potentialUser. 
+		String loginCredential = newLoginObject.getLoginCredential();
+		
+		Optional<User> potentialUser;
+		
+		// 2 Find the email in db based on the results binded to form, otherwise reject.
+		potentialUser = this.uRepo.findByEmail(loginCredential);
 		if ( potentialUser.isPresent() ) {
 			User user = potentialUser.get(); // Get all the data within User object.
 			if ( !BCrypt.checkpw(newLoginObject.getPassword() , user.getPassword())) {
-				result.rejectValue("email", "Matches", "Invalid credentials.");
+				result.rejectValue("password", "Matches", "Invalid credentials.");
 			}
 			return user;
-		// 2 Return "null" if any errors for the controller to handle validations. 
-		} else {
-			result.rejectValue("email", "Matches", "Invalid credentials.");
-			return null;
+		} // ...if not an email...
+		// 3 Find the username in db based on the results binded to form, otherwise reject.
+		potentialUser = this.uRepo.findByUsername(loginCredential);
+		if ( potentialUser.isPresent() ) {
+			User user = potentialUser.get();
+			if ( !BCrypt.checkpw(newLoginObject.getPassword() , user.getPassword())) {
+				result.rejectValue("password", "Matches", "Invalid credentials.");
+			}
+			return user;
 		}
+		
+		// 4 Return "null" if any errors for the controller to handle validations. 
+		result.rejectValue("loginCredential", "Matches", "Invalid credentials.");
+		return null;
 	}
 }

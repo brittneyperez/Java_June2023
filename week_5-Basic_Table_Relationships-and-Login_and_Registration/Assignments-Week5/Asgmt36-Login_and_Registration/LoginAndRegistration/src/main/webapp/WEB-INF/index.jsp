@@ -100,9 +100,9 @@
 						<form:form action="/authenticate/login" method="post" modelAttribute="loginUser">
 							<!-- Email Input -->
 							<div class="form-group row mb-3">
-								<form:label path="email" class="col-md-4 col-form-label">Email:</form:label>
+								<form:label path="loginCredential" class="col-md-4 col-form-label">Email/Username:</form:label>
 								<div class="col-xl-8">
-									<form:input type="text" path="email" class="form-control" />
+									<form:input type="text" path="loginCredential" class="form-control" />
 								</div>
 							</div>
 							<!-- Password Input -->
@@ -113,7 +113,7 @@
 								</div>
 							</div>
 							<!-- Errors -->
-							<form:errors path="email" class="d-flex justify-content-center text-danger" />
+							<form:errors path="loginCredential" class="d-flex justify-content-center text-danger" />
 							<form:errors path="password" class="d-flex justify-content-center text-danger" />
 							<!-- Submit -->
 							<div class="d-flex justify-content-end mb-3">
