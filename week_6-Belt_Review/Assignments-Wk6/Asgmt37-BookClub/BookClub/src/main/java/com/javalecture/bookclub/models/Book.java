@@ -48,12 +48,12 @@ public class Book {
 	@Size(min = 2, message = "Title must be at least 2 characters.")
 	private String title;
 	
-	@NotBlank(message = "Author's name is required.")
+	@NotBlank(message = "Author must not be blank.")
 	@Size(min = 2, message = "Author's name must be at least 2 characters.")
 	private String author;
 	
 	@NotBlank(message = "Your thoughts are required.")
-	@Size(min = 2, message = "Your thoughts must be at least 2 characters.")
+	@Size(min= 2, max = 500, message = "Your thoughts must be at least 2 characters.")
 	private String thoughts;
 	
 	
