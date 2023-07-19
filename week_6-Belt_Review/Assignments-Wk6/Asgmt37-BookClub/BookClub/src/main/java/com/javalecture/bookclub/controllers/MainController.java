@@ -181,7 +181,7 @@ public class MainController {
 	
 	// Delete Book
 	@GetMapping("/books/{bookId}/delete")
-	public String deleteTweet(@PathVariable("bookId") Long bookId) {
+	public String deleteBook(@PathVariable("bookId") Long bookId) {
 		System.out.println("\nDeleting tweet "+ bookId +"...");
 		this.bookService.deleteBookById(bookId);
 		return "redirect:/book-club/books";
