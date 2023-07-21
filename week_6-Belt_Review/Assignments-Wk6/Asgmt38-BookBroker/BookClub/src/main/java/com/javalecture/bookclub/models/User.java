@@ -50,11 +50,11 @@ public class User {
 	
 	// * OBJECT SPECIFIC ATTRIBUTES ---------------
 	@NotEmpty(message = "First Name is required.")
-	@Size(min = 3, message = "Must be at least 2 characters.")
+	@Size(min = 2, message = "Must be at least 2 characters.")
 	private String firstName;
 	
 	@NotEmpty(message = "Last Name is required.")
-	@Size(min = 3, message = "Must be at least 2 characters.")
+	@Size(min = 2, message = "Must be at least 2 characters.")
 	private String lastName;
 	
 	@NotEmpty(message = "Email is required.")

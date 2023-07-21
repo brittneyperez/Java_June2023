@@ -9,6 +9,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+		<script type="text/javascript" src="/js/app.js"></script>
 		<title>Show Book</title>
 	</head>
 	<body class="bg-danger-subtle">
@@ -61,8 +62,16 @@
 						<div id="UserSpecificActions_UpdateDelete" class="d-flex gap-3">
 							<c:choose>							
 								<c:when test="${currentUser.id == book.reader.id}">
-									<a href="/book-club/books/${book.id}/edit" class="btn btn-dark">Edit</a>
-									<a href="/book-club/books/${book.id}/delete" class="btn btn-danger">Delete</a>
+									<c:choose>
+										<c:when test="${ book.borrower == null }">
+											<a href="/book-club/books/${book.id}/edit" class="btn btn-dark">Edit</a>
+											<a href="/book-club/books/${book.id}/delete" class="btn btn-danger">Delete</a>
+										</c:when>
+										<c:otherwise>
+											<a href="/book-club/books/${book.id}/edit" class="btn btn-dark">Edit</a>
+											<button class="btn btn-danger" disabled>Delete</button>
+										</c:otherwise>
+									</c:choose>
 								</c:when>
 								<c:otherwise>
 									<span class="invisible">None</span>

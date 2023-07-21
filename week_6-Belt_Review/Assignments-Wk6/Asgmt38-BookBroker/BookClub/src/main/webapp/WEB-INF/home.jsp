@@ -66,14 +66,28 @@
 											<td><a href="/book-club/books/${thisBook.id}" class="fst-italic text-danger-emphasis text-decoration-none"><c:out value="${thisBook.title}" /></a></td>
 											<td class="d-none d-md-table-cell"><c:out value="${thisBook.author}" /></td>
 											<td class="d-none d-md-table-cell">@<c:out value="${thisBook.reader.username}" /></td>
-											<td class="d-flex align-items-center justify-content-around">
+											<td id="Book_ActionBtns" class="d-flex align-items-center justify-content-around">
 												<c:choose>							
 													<c:when test="${currentUser.id == thisBook.reader.id}">
 														<a href="/book-club/books/${thisBook.id}/edit" class="btn btn-dark btn-sm">Edit</a>
-														<a href="/book-club/books/${thisBook.id}/delete" class="btn btn-danger btn-sm">Delete</a>
+														<c:choose>
+															<c:when test="${thisBook.borrower == null }">
+																<a href="/book-club/books/${thisBook.id}/delete" class="btn btn-danger btn-sm">Delete</a>
+															</c:when>
+															<c:otherwise>
+																<button class="btn btn-danger btn-sm" disabled>Delete</button>
+															</c:otherwise>
+														</c:choose>
 													</c:when>
 													<c:otherwise>
-														<a href="/book-club/books/${thisBook.id}/borrow" class="btn btn-secondary btn-sm">Borrow</a>
+														<c:choose>
+															<c:when test="${ thisBook.borrower != null }">
+																<button class="btn btn-secondary btn-sm" disabled>Borrow</button>
+															</c:when>
+															<c:otherwise>
+																<a href="/book-club/books/${thisBook.id}/borrow" class="btn btn-secondary btn-sm">Borrow</a>
+															</c:otherwise>
+														</c:choose>
 													</c:otherwise>
 												</c:choose>
 											</td>
